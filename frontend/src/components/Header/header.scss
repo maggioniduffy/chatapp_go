@@ -1,0 +1,19 @@
+.header {
+    background-color: #15223b;
+    color: white;
+    display: flex;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+  
+    h2 {
+      margin: 0;
+      padding: 0;
+    }
+
+    img{
+        display: block;
+        margin: auto 3px;
+        height: 2em;
+    }
+  }
