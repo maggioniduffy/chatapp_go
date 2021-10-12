@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import Message from '../Message';
+import "./chathistory.scss";
 
 const ChatHistory = ({ chatHistory }) => {
     const [messages, setMessages] = useState();
 
     useEffect(() => {
-        const msgs = chatHistory ? chatHistory.map((msg, index) => (
-            <p key={index}> {msg.data} </p>
+        const msgs = chatHistory ? chatHistory.map(msg => (
+            <Message message={msg.data}/>
         )) : []
         setMessages(msgs);
     }, [ chatHistory ])

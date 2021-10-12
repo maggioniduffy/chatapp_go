@@ -1,22 +1,16 @@
 import { useEffect, useState } from 'react';
 import { connect, sendMsg } from './api';
-import { ChatHistory, Header } from './components';
+import { ChatHistory, ChatInput, Header } from './components';
 
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   
   const send = () => {
-    if(newMessage !==''){
+    if(newMessage !== ''){
       sendMsg(newMessage)
       setNewMessage('');
     }
-  }
-
-  const handleKeyPress = (e) => e.key === 'Enter' && send();
-
-  const writeNewMessage = (e) => {
-    setNewMessage(e.target.value)
   }
 
   useEffect(() => {
@@ -31,11 +25,10 @@ const App = () => {
     <div>
       <Header />
       <ChatHistory chatHistory={chatHistory} />
-      <button onClick={send}> Say hello </button>
-      <input 
-        value={newMessage} 
-        onChange={writeNewMessage}
-        onKeyPress={handleKeyPress}
+      <ChatInput 
+        message={newMessage}
+        onWrite={setNewMessage}
+        send={send}
       />
     </div>
   );
